@@ -13,7 +13,7 @@ c/c++ 完全由人控制，很自由，但是需要小心内存泄漏。
 java 完全由gc控制，写起来自由，内存有时有问题，需要jvm调优。
 Rust，写代码不自由，需要按照其规则来进行内存管理。
 
-2.字节码技术
+
 
 1.简单编译
 1)javac 编译工具
@@ -56,7 +56,7 @@ Classfile /E:/demo/jvm01/HelloByteCode.class
   Compiled from "HelloByteCode.java"
 class demo.jvm01.HelloByteCode
   minor version: 0
-  major version: 52 // 版本信息，52表示java8，每上升一个版本数字加1
+  major version: 52 // 版本信息
   flags: ACC_SUPER // 历史原有，修正invokespecial指令调用super类方法问题
 Constant pool: // 常量池
 // #1 常量编号，其他地方可以引用；= 分隔符；
