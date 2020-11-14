@@ -30,4 +30,9 @@
 4. 注解与xml混合方式装配bean<br>
 * 结合2 3 两种方式，在`ClassPathXmlApplicationContext`启动类中使用`@ImportResource("classpath:spring.xml")`加载配置文件<br>
 * 通过`ApplicationContextAware`在启动类bean初始化之后注入Spring上下文对象，注意不是在所有bean都初始化完毕之后注入<br>
-* 通过`ApplicationRunner`，在SpringBoot启动之后，即所有的bean都初始化之后，验证bean的注入情况
+* 通过`ApplicationRunner`，在SpringBoot启动之后，即所有的bean都初始化之后，验证bean的注入情况<br>
+5. 注解使用javaconfig的方式注解<br>
+* `@configuration`：标明是一个配置类，用来申明beans。其作用相当与xml配置中的beans.
+* `@configuration`是Spring的注解，非SpringBoot，若只使用Spring需要配合包扫描才生效，若Spring-boot项目则保证启动类spring boot main的主入口，在所有配置类的最上层就行。
+* `@Bean`表示函数的返回值作为bean交给IOC管理
+* 创建@configuration标注的`BeanConfig`类，`getOrderByConfig`方法用`@Bean`标注，将`OrderByConfig`纳入IOC管理 
