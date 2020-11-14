@@ -19,12 +19,12 @@
 ### 2.作业步骤
 1. Class9 project 引入`SpringBoot`，并创建启动类`SpringBeanDemoApplication`<br>
 2. 使用注解方式装配bean<br>
-* 创建`Order`entity，并使用@Component注解
-* 启动`SpringBeanDemoApplication`，会自动加载启动类所在目录以及子目录中所有被注解的bean
-* 装配成功
-3. 创建spring.xml作为装配bean的xml
-* 创建`Product`entity，并在spring.xml中配置`Product` `Order`的bean定义
-* `myProduct`作为Product的自定义BeanId，同时将`order`注入到`myProduct`中
-* 创建`XmlConfigTest`测试类，并使用`ClassPathXmlApplicationContext`加载spring.xml完成bean的装配
-* 值得注意的是，此种方式仍然会触发`Order`类的`InitializingBean`的afterPropertiesSet()，但是没有触发`DisposableBean`的destroy()
+* 创建`Order`entity，并使用@Component注解<br>
+* 启动`SpringBeanDemoApplication`，会自动加载启动类所在目录以及子目录中所有被注解的bean<br>
+* 装配成功<br>
+3. 创建spring.xml作为装配bean的xml<br>
+* 创建`Product`entity，并在spring.xml中配置`Product` `Order`的bean定义<br>
+* `myProduct`作为Product的自定义BeanId，同时将`order`注入到`myProduct`中<br>
+* 创建`XmlConfigTest`测试类，并使用`ClassPathXmlApplicationContext`加载spring.xml完成bean的装配<br>
+* 值得注意的是，此种方式仍然会触发`Order`类的`InitializingBean`的afterPropertiesSet()，但是没有触发`DisposableBean`的destroy()<br>
 
