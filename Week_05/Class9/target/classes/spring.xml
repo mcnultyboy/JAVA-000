@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--由于使用main启动，故不会扫描Order注解，需要使用xml方式重复配置order-->
+    <bean id="orderByXml" class="com.yb.entity.OrderByXml">
+    </bean>
+
+    <!--使用自定义BeanId-->
+    <bean id="myProduct" class="com.yb.entity.ProductByXml">
+        <property name="orderByXml" ref="orderByXml"></property>
+    </bean>
+
+</beans>
