@@ -14,7 +14,6 @@
 2. 本实现方式有没有需要改进的缺点？<br>
 3. 在执行的时候会打印重复的信息，为什么？<br>
 * 答：这个是 idea 的配置导致的，当你 debug 的时候，idea 会调用 ToString 方法来显示对象信息<br>
-![](https://github.com/mcnultyboy/JAVA-000/tree/main/Week_05/JDK代理时bug问题.png)
 ## 2、（必做）写代码实现Spring Bean的装配，方式越多越好（XML、Annotation都可以）,提交到Github。
 ### 1.作业位置 Project Class9
 ### 2.作业步骤
