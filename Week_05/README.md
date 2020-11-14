@@ -43,3 +43,16 @@
 * 2.步骤:<br>
 * 在本项目中创建META-INF/spring.factories，并配置`org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.yb.autoConfiguration.AutoBeanConfiguration`来标识配置类<br>
 * `AutoBeanConfiguration`中配置了`OrderByAutoConfig`&`ProductByAutoConfig`，其中`ProductByAutoConfig`使用`@Conditional({MyCondition.class})`来校验。`MyCondition` 中根据application.propertis中配置的开关来配置bean。<br>
+7. 问题<br>
+@ConditionalOnMissingClass 不生效，无论MyCondition是否存在，都会创建OrderByAutoConfig 这个bean，配置错误？<br>
+想要达到如果项目中没有HaHa.class就初始化并，现在的项目中就没有HaHa.class却编译报错找不到HaHa.class，陷入死循环
+```java
+    @ConditionalOnMissingClass({"com.yb.autoConfiguration.MyCondition.class"}) // 不生效
+    OrderByAutoConfig getOrderByAutoConfig(){
+        return new OrderByAutoConfig();
+    }
+    @ConditionalOnMissingClass({HaHa.class}) // 编译报错找不到HaHa.class
+    OrderByAutoConfig getOrderByAutoConfig(){
+        return new OrderByAutoConfig();
+    }
+```java
