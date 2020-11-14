@@ -32,7 +32,14 @@
 * 通过`ApplicationContextAware`在启动类bean初始化之后注入Spring上下文对象，注意不是在所有bean都初始化完毕之后注入<br>
 * 通过`ApplicationRunner`，在SpringBoot启动之后，即所有的bean都初始化之后，验证bean的注入情况<br>
 5. 注解使用javaconfig的方式注解<br>
-* `@configuration`：标明是一个配置类，用来申明beans。其作用相当与xml配置中的beans.
-* `@configuration`是Spring的注解，非SpringBoot，若只使用Spring需要配合包扫描才生效，若Spring-boot项目则保证启动类spring boot main的主入口，在所有配置类的最上层就行。
-* `@Bean`表示函数的返回值作为bean交给IOC管理
-* 创建@configuration标注的`BeanConfig`类，`getOrderByConfig`方法用`@Bean`标注，将`OrderByConfig`纳入IOC管理 
+* `@configuration`：标明是一个配置类，用来申明beans。其作用相当与xml配置中的beans.<br>
+* `@configuration`是Spring的注解，非SpringBoot，若只使用Spring需要配合包扫描才生效，若Spring-boot项目则保证启动类spring boot main的主入口，在所有配置类的最上层就行。<br>
+* `@Bean`表示函数的返回值作为bean交给IOC管理<br>
+* 创建@configuration标注的`BeanConfig`类，`getOrderByConfig`方法用`@Bean`标注，将`OrderByConfig`纳入IOC管理 <br>
+6. SpringBoot 自动配置配置bean升级版(加入condition等)<br>
+* 1.实现原理：<br>
+* 基于在classpath中出现的类、application.properties，环境上下文的一些配置，根据这些资源作为配置依据，进行自动配置得过程。<br>
+* @EnableAutoConfiguration触发AutoConfigurationImportSelector.getAutoConfigurationEntry()去加载所有mudules以及依赖模块中META-INF/spring.factories文件中配置class<br>
+* 2.步骤:<br>
+* 在本项目中创建META-INF/spring.factories，并配置`org.springframework.boot.autoconfigure.EnableAutoConfiguration=com.yb.autoConfiguration.AutoBeanConfiguration`来标识配置类<br>
+* `AutoBeanConfiguration`中配置了`OrderByAutoConfig`&`ProductByAutoConfig`，其中`ProductByAutoConfig`使用`@Conditional({MyCondition.class})`来校验。`MyCondition` 中根据application.propertis中配置的开关来配置bean。<br>
