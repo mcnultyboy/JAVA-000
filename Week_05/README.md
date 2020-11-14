@@ -55,4 +55,4 @@
     OrderByAutoConfig getOrderByAutoConfig(){
         return new OrderByAutoConfig();
     }
-```java
+```
