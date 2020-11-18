@@ -1,4 +1,5 @@
 package com.yb;
+import com.yb.configurationBean.OrderByConfig;
 import com.yb.entity.OrderByAnno;
 import com.yb.entity.OrderByXml;
 import com.yb.entity.ProductByXml;
@@ -50,8 +51,10 @@ public class SpringBeanDemoApplication implements ApplicationContextAware, Appli
 		OrderByAnno orderByAnno = applicationContext.getBean(OrderByAnno.class);
 		OrderByXml orderByXml = applicationContext.getBean(OrderByXml.class);
 		ProductByXml productByXml = applicationContext.getBean(ProductByXml.class);
+		OrderByConfig orderByConfig = applicationContext.getBean(OrderByConfig.class);
 		System.out.println(orderByAnno); // not null
 		System.out.println(orderByXml); // not null
 		System.out.println(productByXml); // not null
+		System.out.println(orderByConfig); // not null
 	}
 }

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<xsd:schema xmlns="http://com.yb/schema/school"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            targetNamespace="http://com.yb/schema/school">
+
+    <xsd:element name="school">
+        <xsd:complexType>
+            <xsd:attribute name="id" type="xsd:string" />
+            <xsd:attribute  name="name" type="xsd:string" />
+            <xsd:attribute  name="addr" type="xsd:string" />
+        </xsd:complexType>
+    </xsd:element>
+</xsd:schema>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:ybbean="http://com.yb/schema/school"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                          http://www.springframework.org/schema/beans/spring-beans.xsd
+                          http://com.yb/schema/school
+                          http://com.yb/schema/school.xsd
+                          ">
+
+    <!--xmlns=xxx 表示默认的命名空间，如果标签没有指定命名 -->
+    <!--datasource.xsd在项目创建时没有，在项目启动时会spring-xbean会自动生成-->
+    <ybbean:school id="mySchool" name="HighSchool" addr="chengdu" />
+</beans>
