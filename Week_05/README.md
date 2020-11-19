@@ -66,4 +66,5 @@
 ## 3. （必做）给前面课程提供的Student/Klass/School实现自动配置和Starter。
 ### 1.自动配置在周四的作业2中已经完成
 ### 2.实现Starter
-* 
+* 创建了3个project，分别是demo-parent-starter-autoconfigure，demo-parent-starter，child-dem<br>
+* bean"paren"在demo-parent-starter-autoconfigure，在child-demo中开启了parent.enable=true，但是却不能获取到"parent"这个bean。这是为什么呢？？？？<br>
