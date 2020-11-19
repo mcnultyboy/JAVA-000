@@ -68,3 +68,11 @@
 ### 2.实现Starter
 * 创建了3个project，分别是demo-parent-starter-autoconfigure，demo-parent-starter，child-dem<br>
 * bean"paren"在demo-parent-starter-autoconfigure，在child-demo中开启了parent.enable=true，但是却不能获取到"parent"这个bean。这是为什么呢？？？？<br>
+## 6. （必做）研究一下JDBC接口和数据库连接池，掌握它们的设计和用法：
+### 1.作业位置 JDBC-Demo project
+### 2.作业步骤 
+* `StatementTest`，实现1）使用JDBC原生接口，实现数据库的增删改查操作。<br>
+* `PrepareStatementTest`, 2）使用事务，PrepareStatement方式，批处理方式，改进上述操作。<br>
+* 3）配置Hikari连接池，改进上述操作。提交代码到Github。
+* 1.引入Hikari依赖，`DataSourceFactory`用来创建`HikariDataSource`,Hikari连接配置使用db.properties配置.<br>
+* 2.`HikariTest`进行测试
