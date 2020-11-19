@@ -1,4 +1,4 @@
-# Week_05 作业周四
+# Week_05 周四-作业
 ## 1、（选做）使Java里的动态代理，实现一个简单的AOP。
 ### 1.作业位置 Project Class9 Package com.yb.jdkProxy
 ### 2.作业步骤
@@ -59,7 +59,11 @@
 ## 3、（选做）实现一个Spring XML自定义配置，配置一组Bean，例如Student/Klass/School。
 ### 1.作业位置 SpringxbeanDemo project
 ### 2.作业问题，创建了spring.handlers spring.schemas xsd文件，但是仍然提示找不到xsd文件，请老师帮看一下什么问题呢
-# Week_05 作业六
+# Week_05 周六-作业
 ## 1. （选做）总结一下，单例的各种写法，比较它们的优劣。
-### 3.作业位置
-
+### 1.作业位置 project Spring-xbean-Demo com.singleton package
+### 2.作业步骤 列举了三种单例模式，分别是饿汉模式，懒汉双检锁模式，内部类创建单例。
+## 3. （必做）给前面课程提供的Student/Klass/School实现自动配置和Starter。
+### 1.自动配置在周四的作业2中已经完成
+### 2.实现Starter
+* 
