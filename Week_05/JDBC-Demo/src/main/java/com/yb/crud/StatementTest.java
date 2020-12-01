@@ -31,7 +31,17 @@ public class StatementTest {
 
             // query
             String query_sql = "select * from t_student";
-            ResultSet rs = statement.executeQuery(query_sql);
+            statement.executeQuery(query_sql);
+            // 可以通过statement之后获取rs
+            ResultSet rs = statement.getResultSet();
+            ResultSetMetaData rsmd = rs.getMetaData();
+            int columnCount = rsmd.getColumnCount();
+            System.out.println(columnCount);
+            for (int i = 1; i <= columnCount; i++) {
+                System.out.println(rsmd.getColumnName(i));
+                System.out.println(rsmd.getColumnType(i));
+                System.out.println(rsmd.getColumnClassName(i));
+            }
             while (rs.next()){
                 String id = rs.getString("id");
                 String name = rs.getString("name");
@@ -45,6 +55,7 @@ public class StatementTest {
             System.out.println("update number = " + updateSize);
 
             // query
+            // 也可以通过执行获取
             ResultSet rs2 = statement.executeQuery(query_sql);
             while (rs2.next()){
                 String id = rs2.getString("id");
