@@ -135,7 +135,8 @@ mysql> SELECT TABLE_NAME AS '表名',
 1 row in set (0.00 sec)
 ```
 * question??为什么关闭了索引之后，依然有在创建索引？难道是关闭的方式不对？<br>
-
-
+# 周六作业
+## 主从测试
+### 1.作业位置 ./master_slave_test.md
 
 
