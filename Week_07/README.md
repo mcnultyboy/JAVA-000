@@ -55,7 +55,7 @@ end
 ```
 * call batchInsert();耗时 66s<br>
 * 果然，还是数据库自带命令速度最快。<br>
-9.使用存储过程插入数据，关闭索引<br>
+9. 使用存储过程插入数据，关闭索引<br>
 ```mysql
 mysql> alter table t_order disable keys;
 Query OK, 0 rows affected, 1 warning (0.00 sec)
@@ -78,10 +78,10 @@ mysql> call batchInsert();
 Query OK, 0 rows affected (1 min 5.22 sec)
 ```
 * 耗时65s，关不关都没有影响？难道是用存储过程批量插入时默认关闭索引？<br>
-9.1 关闭索引，使用java程序在跑批<br>
+9. 1 关闭索引，使用java程序在跑批<br>
 * 时间也没有缩短。。。<br>
 * 难道是聚集索引不能关闭？？<br>
-9.2 3.为了验证是否为聚集索引不能关掉，则添加普通索引普通索引，并重新跑批，在跑批后查询表空间及索引大小<br>
+9. 2 为了验证是否为聚集索引不能关掉，则添加普通索引普通索引，并重新跑批，在跑批后查询表空间及索引大小<br>
 * KEY `index1` (`cst_id`,`prd_id`) USING BTREE<br>
 * 再次跑批<br>
 ```mysql
