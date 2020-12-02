@@ -51,17 +51,6 @@ pool-1-thread-7,commit
 pool-1-thread-7,over===============
  100w累计耗时=1606716165342-1606716111434=53908 ms = 53 s
  对比之前的235s，快了将近5倍。
-mysql> delimiter $$
-mysql> create procedure myproc()
--> begin
--> declare num int;
--> while num <= 100000 do
--> insert into t_order values (num, 111, 123, 1, '1', 1606716111434, null);
--> set num = num + 1;
--> end
--> while;
--> end$$
-Query OK, 0 rows affected (0.00 sec)
  */
 
 public class PSBatchWithoutAutoCommitBy1000AndConcurrent {

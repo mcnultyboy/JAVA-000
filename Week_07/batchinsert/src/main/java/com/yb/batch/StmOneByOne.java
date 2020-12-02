@@ -89,54 +89,7 @@ KEY `index1` (`cst_id`,`prd_id`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --再次跑批
-mysql> truncate table t_order;
-Query OK, 0 rows affected (0.26 sec)
 
-mysql> SELECT TABLE_NAME AS '表名',
--> CONCAT(ROUND(TABLE_ROWS/10000, 2), ' 万行') AS '行数',
--> CONCAT(ROUND(DATA_LENGTH/(1024*1024*1024), 2), ' GB') AS '表空间',
--> CONCAT(ROUND(INDEX_LENGTH/(1024*1024*1024), 2), ' GB') AS '索引空间',
--> CONCAT(ROUND((DATA_LENGTH+INDEX_LENGTH)/(1024*1024*1024),2),' GB') AS'总空间'
--> FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'jkb' AND TABLE_NAME = 't_order' ORDER BY TABLE_ROWS DESC;
-+---------+-----------+---------+----------+---------+
-| 表名    | 行数      | 表空间  | 索引空间 | 总空间  |
-+---------+-----------+---------+----------+---------+
-| t_order | 0.00 万行 | 0.00 GB | 0.00 GB  | 0.00 GB |
-+---------+-----------+---------+----------+---------+
-1 row in set (0.04 sec)
-
-mysql> alter table t_order disable keys;
-Query OK, 0 rows affected, 1 warning (0.00 sec)
-
-mysql> call batchInsert();
-+---------------------+
-| now()               |
-+---------------------+
-| 2020-12-01 16:23:13 |
-+---------------------+
-1 row in set (0.00 sec)
-
-+---------------------+
-| NOW()               |
-+---------------------+
-| 2020-12-01 16:24:23 |
-+---------------------+
-1 row in set (1 min 10.02 sec)
-
-Query OK, 0 rows affected (1 min 10.03 sec)
-
-mysql> SELECT TABLE_NAME AS '表名',
--> CONCAT(ROUND(TABLE_ROWS/10000, 2), ' 万行') AS '行数',
--> CONCAT(ROUND(DATA_LENGTH/(1024*1024*1024), 2), ' GB') AS '表空间',
--> CONCAT(ROUND(INDEX_LENGTH/(1024*1024*1024), 2), ' GB') AS '索引空间',
--> CONCAT(ROUND((DATA_LENGTH+INDEX_LENGTH)/(1024*1024*1024),2),' GB') AS'总空间'
--> FROM information_schema.TABLES WHERE TABLE_SCHEMA = 'jkb' AND TABLE_NAME = 't_order' ORDER BY TABLE_ROWS DESC;
-+---------+------------+---------+----------+---------+
-| 表名    | 行数       | 表空间  | 索引空间 | 总空间  |
-+---------+------------+---------+----------+---------+
-| t_order | 99.75 万行 | 0.04 GB | 0.02 GB  | 0.06 GB |
-+---------+------------+---------+----------+---------+
-1 row in set (0.00 sec)
 
 
  */

@@ -8,7 +8,7 @@ import java.sql.Statement;
 import static com.yb.batch.ConnectionInfo.*;
 
 /***
- * 使用使用statement ,设置为自动提交batch,每1000条commit一次
+ * 使用使用statement ,设置为自动提交batch,每1000条executeBatch()一次
  *
  *
  * @auther yb
