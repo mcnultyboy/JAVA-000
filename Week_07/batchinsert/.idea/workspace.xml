@@ -12,148 +12,44 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.48934978">
-      <split-first>
-        <leaf>
-          <file leaf-file-name="PSBatchWithoutAutoCommitBy1000AndConcurrent.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/com/yb/batch/PSBatchWithoutAutoCommitBy1000AndConcurrent.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="275">
-                  <caret line="37" column="22" lean-forward="true" selection-start-line="37" selection-start-column="22" selection-end-line="37" selection-end-column="22" />
-                  <folding>
-                    <marker date="1606813815445" expanded="true" signature="2487:2529" ph="insert into t_order... " />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="PSBatchWithoutAutoCommitBy1000.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/com/yb/batch/PSBatchWithoutAutoCommitBy1000.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="375">
-                  <caret line="29" column="6" lean-forward="true" selection-start-line="29" selection-start-column="6" selection-end-line="29" selection-end-column="6" />
-                  <folding>
-                    <marker date="1606809398992" expanded="true" signature="990:1032" ph="insert into t_order... " />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="StmBatchWithoutAutoCommitBy1000.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/com/yb/batch/StmBatchWithoutAutoCommitBy1000.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="425">
-                  <caret line="43" column="53" lean-forward="false" selection-start-line="43" selection-start-column="50" selection-end-line="43" selection-end-column="53" />
-                  <folding>
-                    <marker date="1606710479356" expanded="true" signature="1456:1642" ph="insert into t_order... " />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="StmOneByOne.java" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/main/java/com/yb/batch/StmOneByOne.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="25">
-                  <caret line="91" column="0" lean-forward="false" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                    <marker date="1606820461416" expanded="true" signature="2842:3028" ph="insert into t_order... " />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="StmBatchWithoutAutoCommitByAll.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/com/yb/batch/StmBatchWithoutAutoCommitByAll.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-25">
-                  <caret line="19" column="9" lean-forward="true" selection-start-line="19" selection-start-column="9" selection-end-line="19" selection-end-column="9" />
-                  <folding>
-                    <marker date="1606711961672" expanded="true" signature="1538:1724" ph="insert into t_order... " />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="ReentrantLock.java" pinned="false" current-in-tab="false">
-            <entry file="jar://E:/java/tools/JDK8/src.zip!/java/util/concurrent/locks/ReentrantLock.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="513">
-                  <caret line="255" column="11" lean-forward="false" selection-start-line="255" selection-start-column="11" selection-end-line="255" selection-end-column="11" />
-                  <folding>
-                    <element signature="e#8176#8177#0" expanded="true" />
-                    <element signature="e#8216#8217#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="DataSourceFactory.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/com/yb/batch/DataSourceFactory.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1307">
-                  <caret line="54" column="73" lean-forward="true" selection-start-line="54" selection-start-column="73" selection-end-line="54" selection-end-column="73" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="db.properties" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/resources/db.properties">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="0">
-                  <caret line="0" column="20" lean-forward="false" selection-start-line="0" selection-start-column="20" selection-end-line="0" selection-end-column="20" />
-                  <folding />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file leaf-file-name="StmBatchWithAutoCommitBy1000.java" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/com/yb/batch/StmBatchWithAutoCommitBy1000.java">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="125">
-                  <caret line="10" column="53" lean-forward="true" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="53" />
-                  <folding>
-                    <marker date="1606813815401" expanded="true" signature="1227:1413" ph="insert into t_order... " />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/../README.md">
-              <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-                <state split_layout="FIRST">
-                  <first_editor relative-caret-position="2843">
-                    <caret line="136" column="43" lean-forward="false" selection-start-line="136" selection-start-column="43" selection-end-line="136" selection-end-column="43" />
-                    <folding>
-                      <marker date="1606880175088" expanded="true" signature="92:441" ph="CREATE TABLE... t_order" />
-                      <marker date="1606880175088" expanded="true" signature="1401:1456" ph="insert into t_order... " />
-                      <marker date="1606880175088" expanded="true" signature="1458:1513" ph="if MOD(i,100... " />
-                      <marker date="1606880175088" expanded="true" signature="1661:1693" ph="alter table t_order... " />
-                      <marker date="1606880175088" expanded="true" signature="1751:1769" ph="call batchIn... " />
-                      <marker date="1606880175088" expanded="true" signature="2355:2377" ph="truncate tab... " />
-                      <marker date="1606880175088" expanded="true" signature="2424:2826" ph="SELECT TABLE... " />
-                      <marker date="1606880175088" expanded="true" signature="3124:3156" ph="alter table t_order... " />
-                      <marker date="1606880175088" expanded="true" signature="3214:3232" ph="call batchIn... " />
-                      <marker date="1606880175088" expanded="true" signature="3583:3985" ph="SELECT TABLE... " />
-                    </folding>
-                  </first_editor>
-                  <second_editor />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf>
+      <file leaf-file-name="StmBatchWithAutoCommitBy1000.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/yb/batch/StmBatchWithAutoCommitBy1000.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="125">
+              <caret line="10" column="53" lean-forward="true" selection-start-line="10" selection-start-column="3" selection-end-line="10" selection-end-column="53" />
+              <folding>
+                <marker date="1606813815401" expanded="true" signature="1227:1413" ph="insert into t_order... " />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="FIRST">
+              <first_editor relative-caret-position="0">
+                <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+                <folding>
+                  <marker date="1606880429054" expanded="true" signature="92:441" ph="CREATE TABLE... t_order" />
+                  <marker date="1606880429054" expanded="true" signature="1407:1462" ph="insert into t_order... " />
+                  <marker date="1606880429054" expanded="true" signature="1464:1519" ph="if MOD(i,100... " />
+                  <marker date="1606880429054" expanded="true" signature="1667:1699" ph="alter table t_order... " />
+                  <marker date="1606880429054" expanded="true" signature="1757:1775" ph="call batchIn... " />
+                  <marker date="1606880429054" expanded="true" signature="2361:2383" ph="truncate tab... " />
+                  <marker date="1606880429054" expanded="true" signature="2430:2832" ph="SELECT TABLE... " />
+                  <marker date="1606880429054" expanded="true" signature="3130:3162" ph="alter table t_order... " />
+                  <marker date="1606880429054" expanded="true" signature="3220:3238" ph="call batchIn... " />
+                  <marker date="1606880429054" expanded="true" signature="3589:3991" ph="SELECT TABLE... " />
+                </folding>
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -579,12 +475,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1606701671850</updated>
-      <workItem from="1606701676693" duration="22743000" />
+      <workItem from="1606701676693" duration="22996000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22743000" />
+    <option name="totallyTimeSpent" value="22996000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1844" height="1096" extended-state="6" />
@@ -756,8 +652,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/yb/batch/StmOneByOne.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="25">
-          <caret line="91" column="0" lean-forward="false" selection-start-line="91" selection-start-column="0" selection-end-line="91" selection-end-column="0" />
+        <state relative-caret-position="225">
+          <caret line="99" column="41" lean-forward="false" selection-start-line="99" selection-start-column="41" selection-end-line="99" selection-end-column="41" />
           <folding>
             <element signature="imports" expanded="true" />
             <marker date="1606820461416" expanded="true" signature="2842:3028" ph="insert into t_order... " />
@@ -768,19 +664,19 @@
     <entry file="file://$PROJECT_DIR$/../README.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="FIRST">
-          <first_editor relative-caret-position="2843">
-            <caret line="136" column="43" lean-forward="false" selection-start-line="136" selection-start-column="43" selection-end-line="136" selection-end-column="43" />
+          <first_editor relative-caret-position="0">
+            <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
             <folding>
-              <marker date="1606880175088" expanded="true" signature="92:441" ph="CREATE TABLE... t_order" />
-              <marker date="1606880175088" expanded="true" signature="1401:1456" ph="insert into t_order... " />
-              <marker date="1606880175088" expanded="true" signature="1458:1513" ph="if MOD(i,100... " />
-              <marker date="1606880175088" expanded="true" signature="1661:1693" ph="alter table t_order... " />
-              <marker date="1606880175088" expanded="true" signature="1751:1769" ph="call batchIn... " />
-              <marker date="1606880175088" expanded="true" signature="2355:2377" ph="truncate tab... " />
-              <marker date="1606880175088" expanded="true" signature="2424:2826" ph="SELECT TABLE... " />
-              <marker date="1606880175088" expanded="true" signature="3124:3156" ph="alter table t_order... " />
-              <marker date="1606880175088" expanded="true" signature="3214:3232" ph="call batchIn... " />
-              <marker date="1606880175088" expanded="true" signature="3583:3985" ph="SELECT TABLE... " />
+              <marker date="1606880429054" expanded="true" signature="92:441" ph="CREATE TABLE... t_order" />
+              <marker date="1606880429054" expanded="true" signature="1407:1462" ph="insert into t_order... " />
+              <marker date="1606880429054" expanded="true" signature="1464:1519" ph="if MOD(i,100... " />
+              <marker date="1606880429054" expanded="true" signature="1667:1699" ph="alter table t_order... " />
+              <marker date="1606880429054" expanded="true" signature="1757:1775" ph="call batchIn... " />
+              <marker date="1606880429054" expanded="true" signature="2361:2383" ph="truncate tab... " />
+              <marker date="1606880429054" expanded="true" signature="2430:2832" ph="SELECT TABLE... " />
+              <marker date="1606880429054" expanded="true" signature="3130:3162" ph="alter table t_order... " />
+              <marker date="1606880429054" expanded="true" signature="3220:3238" ph="call batchIn... " />
+              <marker date="1606880429054" expanded="true" signature="3589:3991" ph="SELECT TABLE... " />
             </folding>
           </first_editor>
           <second_editor />

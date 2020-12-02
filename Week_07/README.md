@@ -17,8 +17,8 @@ PRIMARY KEY (id)
 ```
 2. `StmOneByOne` <br>
 * 使用statement顺序插入,每1w条耗时6分钟，太慢了，中断测试<br>
-3.`StmBatchWithAutoCommitBy1000`<br>
-* 使用使用statement ,设置为自动提交batch,每1000条 executeBatch() 一次
+3. `StmBatchWithAutoCommitBy1000`<br>
+* 使用使用statement ,设置为自动提交batch,每1000条 executeBatch() 一次<br>
 * 总结：executeBatch()没有按照批次commit，依然是每条commit一次<br>
 4. `StmBatchWithoutAutoCommitBy1000` <br>
 * 使用statement, 关闭自动提交batch,每1000条commit一次,耗时156s<br>
@@ -33,7 +33,7 @@ PRIMARY KEY (id)
 * 使用PrepareStatement与多线程, 关闭自动提交batch,每1000条commit一次，耗时53s<br>
 * 使用了10个线程，每个线程处理10w条数据<br>
 * 生产上需要注意数据的拆分问题<br>
-8.使用存储过程插入数据，没有关闭索引<br>
+8. 使用存储过程插入数据，没有关闭索引<br>
 * 创建存储过程<br>
 ```sql
 CREATE DEFINER=root@localhost PROCEDURE batchInsert()
@@ -134,7 +134,7 @@ mysql> SELECT TABLE_NAME AS '表名',
 +---------+------------+---------+----------+---------+
 1 row in set (0.00 sec)
 ```
-* question??为什么关闭了索引之后，依然有在创建索引？难道是关闭的方式不对？
+* question??为什么关闭了索引之后，依然有在创建索引？难道是关闭的方式不对？<br>
 
 
 
