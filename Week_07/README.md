@@ -136,7 +136,37 @@ mysql> SELECT TABLE_NAME AS '表名',
 ```
 * question??为什么关闭了索引之后，依然有在创建索引？难道是关闭的方式不对？<br>
 # 周六作业
-## 主从测试
+## 主从配置测试
 ### 1.作业位置 ./master_slave_test.md
-
-
+## 主从项目实践1，基于操作 `AbstractRoutingDataSource`，支持配置多个从库，支持多个从库的负载均衡
+### 1.作业位置 ./MultiDataSource1 project
+### 2.作业步骤
+* 拷贝3个mysql解压版，1 master, 2 slave，并且配置了主从，端口分别是3306 3316 3326.<br>
+* 使用 `AbstractRoutingDataSource` 配置多druid数据源map<br>
+* 通过 aop 切面获取当前请求访问controller的注解，该注解为 `dataSource` 值，并将值放到ThreadLocal中<br>
+* 运行时通过 ThreadLocal 中获取 dataSource 类型，如果是路由类型，则顺序访问实现负载均衡路由<br>
+### 3.缺点
+* 对代码的侵入性强
+* 一次访问只能访问一个数据源
+* 会有读写不一致的问题
+## 主从项目实践2，基于 `ShardingSphere-jdbc` 的 Master-Slave 功能
+### 1.作业位置 ./MultiDataSource2 project
+### 2.注意事项
+* 尚不能支持spring-boot2.X,需要使用1.5.17
+```
+<!--使用2.4的parent会在创建bean的时候exception-->
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.5.17.RELEASE</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+```
+* 不能用 shardingsphere-jdbc-core，可以用 shardingsphere-jdbc-core-spring-boot-starter
+```
+<dependency>
+	<groupId>org.apache.shardingsphere</groupId>
+	<artifactId>shardingsphere-jdbc-core-spring-boot-starter</artifactId>
+	<version>5.0.0-alpha</version>
+</dependency>
+```

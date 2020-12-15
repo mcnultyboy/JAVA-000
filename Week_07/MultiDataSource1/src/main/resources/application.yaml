@@ -1,0 +1,21 @@
+spring:
+    datasource:
+        type: com.alibaba.druid.pool.DruidDataSource
+        driverClassName: com.mysql.cj.jdbc.Driver
+        druid:
+            # 主库数据源
+            master:
+                url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+                username: root
+                password:
+            # 从库数据源
+            slave1:
+                # 从数据源开关/默认关闭
+                url: jdbc:mysql://localhost:3316/test?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+                username: root
+                password:
+            slave2:
+                # 从数据源开关/默认关闭
+                url: jdbc:mysql://localhost:3326/test?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+                username: root
+                password:

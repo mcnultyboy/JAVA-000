@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 public class StreamDemo {
 
     public static void main(String[] args) {
-        List<Integer> list = Arrays.asList(1, 2, 2, 3, 4, 5, 6, 5, 4);
+        /*List<Integer> list = Arrays.asList(1, 2, 2, 3, 4, 5, 6, 5, 4);
         List<Integer> collect = list.stream().filter((i) -> i != 3).collect(Collectors.toList());
         print(collect); // 1,2,4,5,6
         print(list); // 1,2,3,4,5,6 不会更改源数据的内容
@@ -41,7 +41,13 @@ public class StreamDemo {
         System.out.println(first.get());
         // 取最大值
         Optional<Integer> max = list.stream().max((a, c) -> a - c);
-        System.out.println(max);
+        System.out.println(max);*/
+        ArrayList<Person> list = new ArrayList<>();
+        list.add(new Person("zhangsan", 18));
+        list.add(new Person("lisi", 20));
+        list.add(new Person("wangwu", 21));
+        list.add(new Person("wangwu", null));
+        queryPerson(list).forEach(var -> System.out.println(var));
 
 
     }
@@ -49,4 +55,24 @@ public class StreamDemo {
     private static void print(List<Integer> list) {
         System.out.println(String.join(",",list.stream().map(i -> i.toString()).collect(Collectors.toList()).toArray(new String[]{})));
     }
+
+    /***
+     * 返回年龄大于20岁人员姓名
+     *
+     * @param list
+     */
+    public static List<String> queryPerson(List<Person> list){
+        List<String> names = new ArrayList<>();
+        if (list == null || list.size() == 0){ // 非空校验
+            return names;
+        }
+        names = list.stream().filter(person -> {
+                Integer age = person.getAge();
+                return age != null && age > 20;}) // 筛选
+            .map(person -> (person.getName()))
+            .distinct() // 去重
+            .collect(Collectors.toList());
+        return names;
+    }
+
 }
