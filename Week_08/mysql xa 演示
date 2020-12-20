@@ -1,0 +1,144 @@
+
+一、演示没有branch 事务
+mysql> show engines;   # 查看mysql innoDB默认支持xa
++--------------------+---------+----------------------------------------------------------------+--------------+------+------------+
+| Engine             | Support | Comment                                                        | Transactions | XA   | Savepoints |
++--------------------+---------+----------------------------------------------------------------+--------------+------+------------+
+| InnoDB             | DEFAULT | Supports transactions, row-level locking, and foreign keys     | YES          | YES  | YES        |
+| MRG_MYISAM         | YES     | Collection of identical MyISAM tables                          | NO           | NO   | NO         |
+| MEMORY             | YES     | Hash based, stored in memory, useful for temporary tables      | NO           | NO   | NO         |
+| BLACKHOLE          | YES     | /dev/null storage engine (anything you write to it disappears) | NO           | NO   | NO         |
+| MyISAM             | YES     | MyISAM storage engine                                          | NO           | NO   | NO         |
+| CSV                | YES     | CSV storage engine                                             | NO           | NO   | NO         |
+| ARCHIVE            | YES     | Archive storage engine                                         | NO           | NO   | NO         |
+| PERFORMANCE_SCHEMA | YES     | Performance Schema                                             | NO           | NO   | NO         |
+| FEDERATED          | NO      | Federated MySQL storage engine                                 | NULL         | NULL | NULL       |
++--------------------+---------+----------------------------------------------------------------+--------------+------+------------+
+mysql> use test;
+Database changed
+mysql> select * from student;
++------+-----------+
+| age  | name      |
++------+-----------+
+|   21 | aaa       |
+|   20 | lisi      |
+|   20 | wangwu    |
+|   20 | wangwu111 |
+|   20 | zhangsan  |
++------+-----------+
+5 rows in set (0.05 sec)
+
+mysql> xa start 'x01'; # 开启xa 事务
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> insert into student values (22,'bb'); # exec sql，5.7版本的mysql会记录到binlog，5.6记录在cache中(连接中断会消失)
+Query OK, 1 row affected (0.00 sec)
+
+mysql> xa end 'x01'; # end xa，
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> xa prepare 'x01'; # 当前RM 进入 prepare阶段
+Query OK, 0 rows affected (0.08 sec)
+
+mysql> xa recover; # 显示当前活动的 xa
++----------+--------------+--------------+------+
+| formatID | gtrid_length | bqual_length | data |
++----------+--------------+--------------+------+
+|        1 |            3 |            0 | x01  |
++----------+--------------+--------------+------+
+1 row in set (0.06 sec)
+
+mysql> xa rollback 'x01'; # 回滚
+Query OK, 0 rows affected (0.07 sec)
+
+mysql> select * from student; # 数据没有变化
++------+-----------+
+| age  | name      |
++------+-----------+
+|   21 | aaa       |
+|   20 | lisi      |
+|   20 | wangwu    |
+|   20 | wangwu111 |
+|   20 | zhangsan  |
++------+-----------+
+5 rows in set (0.00 sec)
+
+
+二、演示有branch事务
+mysql> xa start 'x01','b1'; # 'x01'表示全局id,'b1'表示分支事务id
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> insert into student values (22,'ab');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> xa end 'x01','b1';
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> xa prepare 'x01','b1';
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> xa recover; # gtrid_length 表示全局事务的长度，bqual_length表示分支事务的长度。data 表示全局+分支事务名
++----------+--------------+--------------+-------+
+| formatID | gtrid_length | bqual_length | data  |
++----------+--------------+--------------+-------+
+|        1 |            3 |            2 | x01b1 |
++----------+--------------+--------------+-------+
+1 row in set (0.00 sec)
+
+mysql> xa commit 'x01','b1'; # 提交事务
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> select * from student; # 记录已发生
++------+-----------+
+| age  | name      |
++------+-----------+
+|   21 | aaa       |
+|   22 | ab        |
+|   20 | lisi      |
+|   20 | wangwu    |
+|   20 | wangwu111 |
+|   20 | zhangsan  |
++------+-----------+
+6 rows in set (0.00 sec)
+
+mysql> xa recover; # 由于全部事务都已提交，所有没有活动tx
+Empty set (0.00 sec)
+
+三、演示mysql 5.7连接断开，重连，binlog情况
+
+mysql> xa start 'x01','b1';
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> insert into student values (23,'aba');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> xa end 'x01','b1';
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> xa prepare 'x01','b1'; # 必须prepare才会记录到binlog， end不会记录。
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> exit;  # 客户端断开和server的connection
+Bye
+PS E:\mysql\mysql-5.7.31-winx64\bin> ./mysql -uroot
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 5
+Server version: 5.7.31-log MySQL Community Server (GPL)  # 5.7
+
+Copyright (c) 2000, 2020, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use test;
+Database changed
+mysql> xa recover; # 可以根据recover信息恢复 xa。
++----------+--------------+--------------+-------+
+| formatID | gtrid_length | bqual_length | data  |
++----------+--------------+--------------+-------+
+|        1 |            3 |            2 | x01b1 |
++----------+--------------+--------------+-------+
+1 row in set (0.00 sec)

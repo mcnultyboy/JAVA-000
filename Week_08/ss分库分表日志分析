@@ -1,0 +1,36 @@
+一、若配置了自动创建sql语句，ss-jdbc在启动时，会根据分库分表策略，自动创建分表结构，如下。
+如果表存在则删除之前的分表
+2020-12-20 17:26:45.491  INFO 1860 --- [           main] ShardingSphere-SQL                       : SQLStatement: MySQLDropTableStatement()
+2020-12-20 17:26:45.491  INFO 1860 --- [           main] ShardingSphere-SQL                       : Actual SQL: ds0 ::: DROP TABLE IF EXISTS `order_info0`
+2020-12-20 17:26:45.491  INFO 1860 --- [           main] ShardingSphere-SQL                       : Actual SQL: ds0 ::: DROP TABLE IF EXISTS `order_info1`
+2020-12-20 17:26:45.491  INFO 1860 --- [           main] ShardingSphere-SQL                       : Actual SQL: ds1 ::: DROP TABLE IF EXISTS `order_info0`
+2020-12-20 17:26:45.491  INFO 1860 --- [           main] ShardingSphere-SQL                       : Actual SQL: ds1 ::: DROP TABLE IF EXISTS `order_info1`
+
+1. 先获取实际表结构
+2020-12-20 17:00:24.805  INFO 11388 --- [           main] ShardingSphere-SQL                       : Logic SQL: CREATE TABLE IF NOT EXISTS `order_info` ( `order_id` bigint(20) unsigned NOT NULL, `user_id` bigint(20) NOT NULL , `price` bigint(20) unsigned NOT NULL , `create_time` bigint(20) unsigned NOT NULL , `update_time` bigint(20) unsigned NOT NULL , PRIMARY KEY (`order_id`) )
+2020-12-20 17:00:24.805  INFO 11388 --- [           main] ShardingSphere-SQL                       : SQLStatement: MySQLCreateTableStatement(isNotExisted=true)
+
+2. 2个库分别创建 order_info0，order_info1表
+2020-12-20 17:00:24.806  INFO 11388 --- [           main] ShardingSphere-SQL                       : Actual SQL: ds0 ::: CREATE TABLE IF NOT EXISTS `order_info0` ( `order_id` bigint(20) unsigned NOT NULL, `user_id` bigint(20) NOT NULL , `price` bigint(20) unsigned NOT NULL , `create_time` bigint(20) unsigned NOT NULL , `update_time` bigint(20) unsigned NOT NULL , PRIMARY KEY (`order_id`) )
+2020-12-20 17:00:24.806  INFO 11388 --- [           main] ShardingSphere-SQL                       : Actual SQL: ds0 ::: CREATE TABLE IF NOT EXISTS `order_info1` ( `order_id` bigint(20) unsigned NOT NULL, `user_id` bigint(20) NOT NULL , `price` bigint(20) unsigned NOT NULL , `create_time` bigint(20) unsigned NOT NULL , `update_time` bigint(20) unsigned NOT NULL , PRIMARY KEY (`order_id`) )
+2020-12-20 17:00:24.806  INFO 11388 --- [           main] ShardingSphere-SQL                       : Actual SQL: ds1 ::: CREATE TABLE IF NOT EXISTS `order_info0` ( `order_id` bigint(20) unsigned NOT NULL, `user_id` bigint(20) NOT NULL , `price` bigint(20) unsigned NOT NULL , `create_time` bigint(20) unsigned NOT NULL , `update_time` bigint(20) unsigned NOT NULL , PRIMARY KEY (`order_id`) )
+2020-12-20 17:00:24.806  INFO 11388 --- [           main] ShardingSphere-SQL                       : Actual SQL: ds1 ::: CREATE TABLE IF NOT EXISTS `order_info1` ( `order_id` bigint(20) unsigned NOT NULL, `user_id` bigint(20) NOT NULL , `price` bigint(20) unsigned NOT NULL , `create_time` bigint(20) unsigned NOT NULL , `update_time` bigint(20) unsigned NOT NULL , PRIMARY KEY (`order_id`) )
+2020-12-20 17:00:26.354  INFO 11388 --- [           main] o.s.jdbc.datasource.init.ScriptUtils     : Executed SQL script from class path resource [db/schema.sql] in 2236 ms.
+
+二、 插入数据
+1. 逻辑sql
+2020-12-20 17:11:47.135  INFO 14524 --- [nio-8080-exec-1] ShardingSphere-SQL                       : Logic SQL: insert into order_info values (?, ?,?, ?, ?)
+2020-12-20 17:11:47.135  INFO 14524 --- [nio-8080-exec-1] ShardingSphere-SQL                       : SQLStatement: MySQLInsertStatement(setAssignment=Optional.empty, onDuplicateKeyColumns=Optional.empty)
+
+2. 经过route后的sql
+2020-12-20 17:11:47.135  INFO 14524 --- [nio-8080-exec-1] ShardingSphere-SQL                       : Actual SQL: ds0 ::: insert into order_info0 values (?, ?, ?, ?, ?) ::: [67788642, 23818930, 1.0, 1608455506970, 1608455506970]
+
+三、 查询数据
+1. 只通过 orderId 查询，按照当前策略，会访问2个库查询，后union
+2020-12-20 17:12:18.771  INFO 14524 --- [nio-8080-exec-3] ShardingSphere-SQL                       : Actual SQL: ds0 ::: select * from order_info0 where order_id=? ::: [67788642]
+2020-12-20 17:12:18.771  INFO 14524 --- [nio-8080-exec-3] ShardingSphere-SQL                       : Actual SQL: ds1 ::: select * from order_info0 where order_id=? ::: [67788642]
+
+2. 通过 userId orderId 2个条件唯一查询，则只会唯一路由到唯一表
+2020-12-20 17:42:39.564  INFO 10500 --- [nio-8080-exec-4] ShardingSphere-SQL                       : Logic SQL: select * from order_info where user_id=? and order_id=?
+2020-12-20 17:42:39.564  INFO 10500 --- [nio-8080-exec-4] ShardingSphere-SQL                       : SQLStatement: MySQLSelectStatement(limit=Optional.empty, lock=Optional.empty)
+2020-12-20 17:42:39.564  INFO 10500 --- [nio-8080-exec-4] ShardingSphere-SQL                       : Actual SQL: ds0 ::: select * from order_info0 where user_id=? and order_id=? ::: [45496270, 52782216]
