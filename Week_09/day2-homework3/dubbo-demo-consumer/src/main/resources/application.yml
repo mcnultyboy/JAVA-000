@@ -1,0 +1,24 @@
+server:
+  port: 8188
+spring:
+  application:
+    name: dubbo-demo-consumer
+  datasource:
+      url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf8
+      driverClassName: com.mysql.jdbc.Driver
+      username: root
+      password:
+  main:
+    allow-bean-definition-overriding: true
+    #web-application-type: none 需要注释，否则不能启动tomcat
+dubbo:
+  scan:
+    base-packages: io.kimmking.dubbo.demo.consumer
+  registry:
+    address: zookeeper://localhost:2181
+  metadata-report:
+    address: zookeeper://localhost:2181
+hmily:
+  support:
+    rpc:
+      annotation: true

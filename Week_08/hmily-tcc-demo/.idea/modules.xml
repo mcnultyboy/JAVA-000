@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/hmily-demo-common/hmily-demo-common.iml" filepath="$PROJECT_DIR$/hmily-demo-common/hmily-demo-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hmily-demo-dubbo-account/hmily-demo-dubbo-account.iml" filepath="$PROJECT_DIR$/hmily-demo-dubbo-account/hmily-demo-dubbo-account.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hmily-demo-dubbo-inventory/hmily-demo-dubbo-inventory.iml" filepath="$PROJECT_DIR$/hmily-demo-dubbo-inventory/hmily-demo-dubbo-inventory.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hmily-demo-dubbo-order/hmily-demo-dubbo-order.iml" filepath="$PROJECT_DIR$/hmily-demo-dubbo-order/hmily-demo-dubbo-order.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hmily-tcc-demo.iml" filepath="$PROJECT_DIR$/hmily-tcc-demo.iml" />
+    </modules>
+  </component>
+</project>
