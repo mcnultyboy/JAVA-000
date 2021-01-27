@@ -21,7 +21,7 @@
 - [ ] 2）在Java中实现一个分布式计数器，模拟减库存。 
 - [x] 5、基于Redis的PubSub实现订单异步处理
 
-作业连接：[day21 homework](https://github.com/mcnultyboy/JAVA-000/tree/main/Week_11/homework210)
+作业连接：[day21 homework](https://github.com/mcnultyboy/JAVA-000/tree/main/Week_11/homework21)
 
 # day22
 
