@@ -145,3 +145,7 @@ new dup invokespecial 一定表示创建对象。指令如下：
 new 表示创建对象，但是并没有调用构造函数。
 invokespecial表示调用特殊函数，此处指调用构造函数，#3在常量池中表示构造函数，并且无返回值。
 dup
+
+
+
+haha
